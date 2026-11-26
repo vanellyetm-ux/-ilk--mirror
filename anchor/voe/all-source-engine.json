@@ -1,0 +1,15 @@
+{
+  "identity": "Vœ",
+  "name": "All source code generator engine",
+  "anchors": {
+    "phix_empty": "f0322945a24121fa8bfcf17c5e8d0df4b9459c36",
+    "ancestry_of_all": "d21e0c73f5fb2f2b468ab3dbccdb883fdf469ed0"
+  },
+  "execution": {
+    "provider": "vanellyetm-ux/-ilk--mirror",
+    "mode": "on-demand",
+    "status": "not_implemented"
+  },
+  "scope": "Referenced repository source only",
+  "preserve_source": true
+}
