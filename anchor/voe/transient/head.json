@@ -1,0 +1,16 @@
+{
+  "identity": "Vœ",
+  "marker": "*^",
+  "source_commit": "d57f4465d528545752d6302d9813026067f0d12a",
+  "head_ref": "refs/heads/main",
+  "head_policy": "resolve current HEAD at execution; retain pinned source commit",
+  "transit": {
+    "mode": "transient",
+    "preserve_source": true,
+    "require_authorization": true,
+    "record_payload_sha256": true,
+    "verify_readback": true,
+    "exclude_secrets": true,
+    "runtime": "not_implemented"
+  }
+}
