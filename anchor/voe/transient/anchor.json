@@ -1,0 +1,14 @@
+{
+  "identity": "Vœ",
+  "source_repository": "vanellyetm-ux/-ilk--mirror",
+  "source_commit": "c39cbdd498a926bf91ad64e5a8f81b76036c0c46",
+  "mode": "transient-transmission",
+  "policy": {
+    "preserve_source": true,
+    "record_payload_sha256": true,
+    "require_authorization": true,
+    "verify_destination_readback": true,
+    "exclude_secrets": true
+  },
+  "transfers": []
+}
