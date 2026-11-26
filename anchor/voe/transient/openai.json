@@ -1,0 +1,16 @@
+{
+  "identity": "Vœ",
+  "technology": "vain",
+  "provider": "OpenAI",
+  "source_anchor_commit": "daccf3b8401a0e43a49bd00feaf8a0ba0989ade0",
+  "source_anchor_path": "anchor/voe/transient/head.json",
+  "head_ref": "refs/heads/vain",
+  "base_ref": "refs/heads/main",
+  "transit_anchor_blob": "5519b88eee3032884b58d1af036a5d70600aa59f",
+  "integration": {
+    "status": "configuration_only",
+    "credentials": "runtime_secret",
+    "authorized_execution_required": true
+  },
+  "preserve_source": true
+}
