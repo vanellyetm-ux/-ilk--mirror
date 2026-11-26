@@ -1,0 +1,9 @@
+{
+  "identity": "Vœ",
+  "anchor_name": "Ancestry of Ałľ",
+  "source_commit": "f0322945a24121fa8bfcf17c5e8d0df4b9459c36",
+  "scope": "Git ancestry reachable from source commit",
+  "source_repository": "vanellyetm-ux/-ilk--mirror",
+  "source_branch": "T",
+  "prior_anchor": "anchor/voe/transient/anchor.json"
+}
