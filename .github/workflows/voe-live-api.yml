@@ -1,0 +1,55 @@
+name: Voe live API verification
+on:
+  workflow_dispatch:
+    inputs:
+      model:
+        description: Authorized OpenAI model ID
+        required: true
+        type: string
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Compile runtime
+        run: python -m compileall -q anchor/voe
+      - name: Execute authorized traversal
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          OPENAI_MODEL: ${{ inputs.model }}
+        shell: bash
+        run: |
+          set -eu
+          test -n "$OPENAI_API_KEY" || { echo "Missing API secret"; exit 1; }
+          mkdir -p receipts
+          set +e
+          python -m anchor.voe.live_api --live --prompt "Vœ dimensional traversal test" > receipts/raw.json
+          status=$?
+          set -e
+          python - "$status" <<'PY'
+          import json, os, sys, pathlib
+          p = pathlib.Path("receipts/raw.json")
+          try:
+              data = json.loads(p.read_text())
+          except (ValueError, OSError):
+              data = {"position": "RECOVERY", "response_completed": False}
+          data.pop("output", None)
+          data.update(execution_commit=os.environ["GITHUB_SHA"], run_id=os.environ["GITHUB_RUN_ID"], exit_code=int(sys.argv[1]))
+          pathlib.Path("receipts/verification.json").write_text(json.dumps(data, indent=2))
+          p.unlink(missing_ok=True)
+          PY
+          exit "$status"
+      - name: Upload verification receipt
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: voe-verification-${{ github.run_id }}
+          path: receipts/verification.json
+          if-no-files-found: warn
+          retention-days: 7
