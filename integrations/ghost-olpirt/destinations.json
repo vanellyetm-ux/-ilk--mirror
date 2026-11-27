@@ -1,0 +1,43 @@
+{
+  "schema": "ghost-olpirt-destinations/v1",
+  "source_repository": "vanellyetm-ux/-ilk--mirror",
+  "destinations": [
+    {
+      "id": "ashshow-v",
+      "label": "AshShow/V",
+      "repository": "AshShow organization; exact target repository not authorized for writes",
+      "repository_status": "EXTERNAL_TARGET_WRITE_NOT_REQUIRED",
+      "branch": null,
+      "write_status": "DOCUMENTED_HANDOFF_ONLY",
+      "note": "This integration does not create or modify AshShow repositories. An organization-authorized maintainer may later import or accept a separately approved handoff."
+    },
+    {
+      "id": "ash",
+      "label": "Ash",
+      "repository": "vanellyetm-ux/Ash",
+      "repository_status": "IDENTITY_VERIFIED",
+      "branch": "integration/ghost-olpirt-knowledge-hq",
+      "write_status": "PR_OPEN_DRAFT",
+      "pull_request": "https://github.com/vanellyetm-ux/Ash/pull/1"
+    },
+    {
+      "id": "lumi",
+      "label": "Lumi",
+      "repository": "vanellyetm-ux/Lumi",
+      "repository_status": "IDENTITY_VERIFIED",
+      "branch": "integration/ghost-olpirt-knowledge-hq",
+      "write_status": "PR_OPEN_DRAFT",
+      "pull_request": "https://github.com/vanellyetm-ux/Lumi/pull/3"
+    }
+  ],
+  "policy": {
+    "separate_receipts": true,
+    "require_scoped_human_approval": true,
+    "feature_branches_only": true,
+    "verify_destination_readback": true,
+    "default_branch_writes": false,
+    "force_push": false,
+    "secrets_in_payload": false,
+    "ashshow_write_access_required_for_these_prs": false
+  }
+}
