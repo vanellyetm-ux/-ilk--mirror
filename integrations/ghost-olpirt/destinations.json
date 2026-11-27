@@ -1,0 +1,31 @@
+{
+  "schema": "ghost-olpirt-destinations/v1",
+  "source_repository": "vanellyetm-ux/-ilk--mirror",
+  "destinations": [
+    {
+      "id": "ashshow-v",
+      "label": "AshShow/V",
+      "repository": null,
+      "repository_status": "IDENTITY_PENDING",
+      "branch": null,
+      "write_status": "NOT_CONFIGURED"
+    },
+    {
+      "id": "ash",
+      "label": "Ash",
+      "repository": "vanellyetm-ux/Ash",
+      "repository_status": "IDENTITY_VERIFIED",
+      "branch": "integration/ghost-olpirt-knowledge-hq",
+      "write_status": "BRANCH_READY_REVIEW_REQUIRED"
+    }
+  ],
+  "policy": {
+    "separate_receipts": true,
+    "require_scoped_human_approval": true,
+    "feature_branches_only": true,
+    "verify_destination_readback": true,
+    "default_branch_writes": false,
+    "force_push": false,
+    "secrets_in_payload": false
+  }
+}
