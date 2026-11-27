@@ -1,0 +1,67 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "GHOST-OLPIRT narrative transfer",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema", "transfer_id", "source", "narrative", "destination", "authorization", "verification"],
+  "properties": {
+    "schema": { "const": "ghost-olpirt-narrative-transfer/v1" },
+    "transfer_id": { "type": "string", "minLength": 8 },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["repository", "ref", "commit", "path", "sha256"],
+      "properties": {
+        "repository": { "type": "string", "minLength": 3 },
+        "ref": { "type": "string", "pattern": "^refs/heads/.+" },
+        "commit": { "type": "string", "pattern": "^[0-9a-f]{40}$" },
+        "path": { "type": "string", "minLength": 1 },
+        "sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" }
+      }
+    },
+    "narrative": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["origin", "text", "classification", "confidence"],
+      "properties": {
+        "origin": { "type": "string", "minLength": 1 },
+        "text": { "type": "string" },
+        "classification": { "enum": ["OBSERVATION", "INTERPRETATION", "PROPOSAL", "QUESTION"] },
+        "confidence": { "enum": ["HIGH", "MEDIUM", "LOW", "UNASSESSED"] },
+        "context_refs": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "destination": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "repository", "ref", "path"],
+      "properties": {
+        "id": { "enum": ["ash", "ashshow-v"] },
+        "repository": { "type": "string", "minLength": 3 },
+        "ref": { "type": "string", "pattern": "^refs/heads/.+" },
+        "path": { "type": "string", "minLength": 1 }
+      }
+    },
+    "authorization": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["approval_id", "approved", "approved_operations"],
+      "properties": {
+        "approval_id": { "type": "string" },
+        "approved": { "type": "boolean" },
+        "approved_operations": { "type": "array", "items": { "type": "string" } },
+        "expires_at": { "type": ["string", "null"], "format": "date-time" }
+      }
+    },
+    "verification": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["state"],
+      "properties": {
+        "destination_commit": { "type": ["string", "null"], "pattern": "^[0-9a-f]{40}$" },
+        "readback_sha256": { "type": ["string", "null"], "pattern": "^[0-9a-f]{64}$" },
+        "state": { "enum": ["PENDING_AUTHORIZATION", "AUTHORIZED", "STAGED", "VERIFIED", "ACCEPTED", "PENDING_REVIEW", "REJECTED"] }
+      }
+    }
+  }
+}
