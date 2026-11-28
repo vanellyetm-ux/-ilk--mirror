@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "proposal_id": "yaero-co-domain-integration",
+  "status": "proposal-only",
+  "domain": {
+    "unicode": "Yæŕơ.co",
+    "ascii_idna": "xn--y-4fa74a8j.co",
+    "hostname_unicode": "Your.Yæŕơ.co",
+    "hostname_ascii": "your.xn--y-4fa74a8j.co"
+  },
+  "ownership": {
+    "registered": false,
+    "verified": false,
+    "registrar": null,
+    "owner_account": null,
+    "activation_blocked_until": [
+      "Register the parent domain",
+      "Verify control of the parent domain",
+      "Attach the hostname to the intended Vercel project",
+      "Obtain the exact DNS target and verification challenge from the provider"
+    ]
+  },
+  "routing": {
+    "service": "YAERO",
+    "integration_layer": "Silk Mirror",
+    "vercel_project": "yaero-frontpage",
+    "vercel_project_id": "prj_elgrE7ZsPzYUcoXPFluPrezreS2G",
+    "production_origin": "https://yaero-frontpage.vercel.app",
+    "hostname": "your.xn--y-4fa74a8j.co",
+    "mode": "independent-hostname",
+    "private_source_exposure": false
+  },
+  "dns_proposal": {
+    "records": [],
+    "note": "Do not publish guessed DNS records. After registration and Vercel domain attachment, fetch the provider-issued CNAME/A target and TXT verification challenge, then populate records here."
+  },
+  "safety": {
+    "no_live_dns_changes": true,
+    "no_domain_purchase": true,
+    "no_existing_domain_mutation": true,
+    "preserve_quantum_server": true,
+    "require_human_approval_before_activation": true
+  }
+}
